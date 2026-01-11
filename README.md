@@ -3,7 +3,7 @@
 
 ---
 
-### :mortar_board: Objetivo
+### :pushpin: Objetivo
 El objetivo de esta prueba es evaluar conocomientos en **Java + Spring Boot**, incluyendo el desarrollo de una 
 **API RESTful completa** que implemente operaciones **CRUD** con **JPA**, relaciones entre entidades, control de 
 errores y excepciones, uso de DTOs, buenas practicas REST y programación funcional (uso de lamddas y streams).
@@ -14,7 +14,7 @@ errores y excepciones, uso de DTOs, buenas practicas REST y programación funcio
 - Estudiante (**Student**)
 - Curso (**Course**)
 
-### :green_book: Relaciones
+### :mortar_board: Relaciones
 
 - Una **universidad** puede tener muchos **cursos**
 - Un **curso** tiene muchos **estudiantes**
