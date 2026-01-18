@@ -1,6 +1,7 @@
 package com.example.apirest.proyect.service;
 
 import com.example.apirest.proyect.dto.StudentDTO;
+import com.example.apirest.proyect.exception.NotFoundException;
 import com.example.apirest.proyect.mapper.Mapper;
 import com.example.apirest.proyect.model.Student;
 import com.example.apirest.proyect.repository.StudentRepository;
@@ -18,7 +19,11 @@ public class StudentService implements StudentServiceImp {
 
     @Override
     public List<StudentDTO> listStudents() {
-        return repo.findAll().stream().map(Mapper::toDTO).toList();
+
+        return repo.findAll()
+                .stream()
+                .map(Mapper::toDTO)
+                .toList();
     }
 
     @Override
@@ -34,11 +39,21 @@ public class StudentService implements StudentServiceImp {
     public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
 
         Student stud = repo.findById(id)
-                .orElseThrow() -> new Not
+                .orElseThrow(() -> new NotFoundException("Student not found"));
+
+        stud.setName(studentDTO.getName());
+        stud.setEmail(studentDTO.getEmail());
+
+        return Mapper.toDTO(repo.save(stud));
     }
 
     @Override
     public void deleteStudent(Long id) {
 
+        if (repo.existsById(id)) {
+            throw new NotFoundException("Student not found");
+        }
+
+        repo.deleteById(id);
     }
 }
