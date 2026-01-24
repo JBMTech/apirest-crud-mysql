@@ -50,7 +50,7 @@ public class UniversityService implements UniversityServiceImp {
 
     @Override
     public void deleteUniversity(Long id) {
-        if (repo.existsById(id)) {
+        if (!repo.existsById(id)) {
             throw new NotFoundException("University not found");
         }
 

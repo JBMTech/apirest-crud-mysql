@@ -16,6 +16,7 @@ public class StudentController {
     @Autowired
     private StudentServiceImp studentService;
 
+    @GetMapping
     public ResponseEntity<List<StudentDTO>> getStudents () {
         return ResponseEntity.ok(studentService.listStudents());
     }
@@ -23,7 +24,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<StudentDTO> createdStudent(@RequestBody StudentDTO dto) {
         StudentDTO created = studentService.createdStudent(dto);
-        return ResponseEntity.created(URI.create("/api/student " + created.getId())).body(created);
+        return ResponseEntity.created(URI.create("/api/student/" + created.getId())).body(created);
     }
 
     @PutMapping("/{id}")
@@ -31,7 +32,7 @@ public class StudentController {
         return ResponseEntity.ok(studentService.updateStudent(id, dto));
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<StudentDTO> deleteStudent (@PathVariable Long id) {
         studentService.deleteStudent(id);
         return ResponseEntity.noContent().build();

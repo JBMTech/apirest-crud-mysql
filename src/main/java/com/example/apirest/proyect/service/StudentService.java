@@ -50,7 +50,7 @@ public class StudentService implements StudentServiceImp {
     @Override
     public void deleteStudent(Long id) {
 
-        if (repo.existsById(id)) {
+        if (!repo.existsById(id)) {
             throw new NotFoundException("Student not found");
         }
 

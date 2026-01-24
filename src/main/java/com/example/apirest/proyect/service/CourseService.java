@@ -115,9 +115,9 @@ public class CourseService implements CourseServiceImp {
             c.setUniversity(u);
         }
 
-        CourseDTO exittCourse = Mapper.toDTO(c);
+        CourseDTO exitCourse = Mapper.toDTO(c);
 
-        return exittCourse;
+        return exitCourse;
     }
 
     @Override
